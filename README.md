@@ -6,14 +6,14 @@ A comprehensive PowerShell script that optimizes Windows 11 for maximum performa
 
 | Step | Category | Changes |
 |------|----------|---------|
-| 1 | **Telemetry & Privacy** | Disables telemetry, ads ID, Cortana, Bing search, activity history, content delivery |
+| 1 | **Telemetry & Privacy** | Disables telemetry, ads ID, Bing search, activity history, content delivery |
 | 2 | **Services** | Stops 30+ unnecessary services (Superfetch, Search Indexer, Xbox, Geolocation, etc.) |
 | 3 | **Power Plan** | Activates Ultimate Performance with 100% CPU, no USB suspend |
 | 4 | **Visual Effects** | Best performance mode, disables transparency, animations, Peek |
 | 5 | **Explorer & UI** | Shows file extensions, hidden files, hides widgets/chat, seconds in clock |
 | 6 | **Scheduled Tasks** | Disables 20+ telemetry/diagnostic tasks |
 | 7 | **Network** | Disables Nagle's algorithm, optimizes TCP/IP for low latency |
-| 8 | **Bloatware** | Removes 50+ pre-installed apps (Cortana, Teams, Candy Crush, TikTok, etc.) |
+| 8 | **Bloatware** | Removes 50+ pre-installed apps (Teams, Candy Crush, TikTok, etc.) |
 | 9 | **Hosts Block** | Blocks 20+ Microsoft telemetry/tracking domains |
 | 10 | **Disk & SSD** | Enables TRIM, disables SuperFetch, cleans temp files |
 | 11 | **NVIDIA GPU** | Disables telemetry, overlay, sets max performance mode via registry |

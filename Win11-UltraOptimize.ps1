@@ -116,10 +116,8 @@ $TelemetryReg = @{
     }
     'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Search' = @{
         'BingSearchEnabled'         = 0
-        'CortanaConsent'            = 0
     }
     'HKLM:\SOFTWARE\Policies\Microsoft\Windows\Windows Search' = @{
-        'AllowCortana'              = 0
         'DisableWebSearch'          = 1
         'ConnectedSearchUseWeb'     = 0
         'AllowSearchToUseLocation'  = 0
@@ -260,7 +258,6 @@ $ExplorerReg = @{
         'TaskbarAnimations'         = 0
         'IconsOnly'                 = 0
         'ShowTaskViewButton'        = 0
-        'ShowCortanaButton'         = 0
         'ShowSecondsInSystemClock'  = 1
         'LaunchTo'                  = 1    # Open to This PC
         'Hidden'                    = 1    # Show hidden files
@@ -389,7 +386,6 @@ Set-ItemProperty -Path 'HKLM:\SOFTWARE\Policies\Microsoft\Windows\Psched' -Name 
 Write-Host "[8/12] Removing bloatware apps..." -ForegroundColor Green
 
 $Bloatware = @(
-    'Microsoft.549981C3F5F10'          # Cortana
     'Microsoft.BingNews'               # Bing News
     'Microsoft.BingWeather'            # Bing Weather
     'Microsoft.BingSearch'             # Bing Search
@@ -432,7 +428,6 @@ $Bloatware = @(
     'Clipchamp.Clipchamp'              # Clipchamp
     'Microsoft.WindowsCopilot'         # Copilot
     'Microsoft.Copilot'                # Copilot
-    'Microsoft.549981C3F5F10'          # Cortana
     'Microsoft.WindowsMeetNow'         # Meet Now
     'MicrosoftTeams'                    # Teams (new)
     'Microsoft.Microsoft3DViewer'      # 3D Viewer
