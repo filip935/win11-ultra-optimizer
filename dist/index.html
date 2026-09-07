@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Client</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="login-screen" class="screen active">
+        <div class="login-container">
+            <div class="logo">
+                <h1>NOVA</h1>
+                <p>CLIENT</p>
+            </div>
+            <p class="tagline">Ultra Performance Minecraft</p>
+            <button id="login-btn" class="btn-microsoft">
+                <svg width="20" height="20" viewBox="0 0 21 21"><rect x="1" y="1" width="9" height="9" fill="#f25022"/><rect x="11" y="1" width="9" height="9" fill="#7fba00"/><rect x="1" y="11" width="9" height="9" fill="#00a4ef"/><rect x="11" y="11" width="9" height="9" fill="#ffb900"/></svg>
+                Sign in with Microsoft
+            </button>
+            <div class="divider"><span>or</span></div>
+            <div class="offline-login">
+                <input type="text" id="offline-username" placeholder="Enter a username" maxlength="16">
+                <button id="offline-login-btn" class="btn-secondary">Play Offline</button>
+            </div>
+            <div id="login-status" class="login-status hidden"></div>
+        </div>
+    </div>
+
+    <!-- Main Dashboard -->
+    <div id="dashboard" class="screen">
+        <div class="sidebar">
+            <div class="sidebar-logo">
+                <h2>NOVA</h2>
+            </div>
+            <nav>
+                <button class="nav-btn active" data-section="home">
+                    <span class="nav-icon">&#9654;</span> Home
+                </button>
+                <button class="nav-btn" data-section="versions">
+                    <span class="nav-icon">&#9881;</span> Versions
+                </button>
+                <button class="nav-btn" data-section="mods">
+                    <span class="nav-icon">&#9878;</span> Mods
+                </button>
+                <button class="nav-btn" data-section="resourcepacks">
+                    <span class="nav-icon">&#127912;</span> Packs
+                </button>
+                <button class="nav-btn" data-section="shaders">
+                    <span class="nav-icon">&#9889;</span> Shaders
+                </button>
+                <button class="nav-btn" data-section="settings">
+                    <span class="nav-icon">&#9881;</span> Settings
+                </button>
+            </nav>
+            <div class="sidebar-user">
+                <div class="user-avatar" id="user-avatar">?</div>
+                <span id="sidebar-username">Not logged in</span>
+                <button id="logout-btn" class="btn-small hidden">Logout</button>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div id="section-home" class="section active">
+                <div class="home-top">
+                    <div class="play-section">
+                        <div class="version-select-row">
+                            <label>Version</label>
+                            <select id="version-select"></select>
+                        </div>
+                        <div class="profile-select-row">
+                            <label>Profile</label>
+                            <select id="profile-select"></select>
+                        </div>
+                        <button id="play-btn" class="btn-play">
+                            <span>PLAY</span>
+                        </button>
+                    </div>
+                    <div class="home-stats">
+                        <div class="stat-card">
+                            <span class="stat-label">Java</span>
+                            <span class="stat-value" id="stat-java">Checking...</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">RAM</span>
+                            <span class="stat-value" id="stat-ram">4 GB</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">Version</span>
+                            <span class="stat-value" id="stat-version">1.20.4</span>
+                        </div>
+                        <div class="stat-card">
+                            <span class="stat-label">FPS Boost</span>
+                            <span class="stat-value neon">ACTIVE</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="home-bottom">
+                    <div class="performance-banner">
+                        <h3>&#9889; Performance Mods Active</h3>
+                        <p id="active-mods-list">Sodium, Lithium, Starlight, FerriteCore, EntityCulling, LazyDFU</p>
+                    </div>
+                </div>
+            </div>
+
+            <div id="section-versions" class="section">
+                <h2>Minecraft Versions</h2>
+                <div id="versions-grid" class="versions-grid"></div>
+            </div>
+
+            <div id="section-mods" class="section">
+                <div class="mods-header">
+                    <div class="mods-title-row">
+                        <h2>Mods</h2>
+                        <div class="mods-version-badge" id="mods-version-badge">1.20.4</div>
+                    </div>
+                    <div class="mods-profile-bar">
+                        <div class="mods-profile-tabs" id="profile-tabs"></div>
+                        <button class="btn-add-profile" id="add-profile-btn" title="New Profile">+</button>
+                    </div>
+                </div>
+                <div class="mods-category-tabs" id="mod-category-tabs">
+                    <button class="cat-tab active" data-cat="all">All</button>
+                    <button class="cat-tab" data-cat="performance">Performance</button>
+                    <button class="cat-tab" data-cat="optimization">Optimization</button>
+                    <button class="cat-tab" data-cat="visual">Visual</button>
+                    <button class="cat-tab" data-cat="utility">Utility</button>
+                </div>
+                <div class="mods-stats" id="mods-stats">
+                    <span class="mods-stat"><strong id="mods-active-count">0</strong> Active</span>
+                    <span class="mods-stat"><strong id="mods-total-count">0</strong> Available</span>
+                </div>
+                <div class="overlay-toggle-card" id="overlay-toggle-card">
+                    <div class="mod-card-icon" style="background:#ff4466">NO</div>
+                    <div class="mod-card-body">
+                        <div class="mod-card-top">
+                            <span class="mod-card-name">Nova Overlay</span>
+                            <input type="checkbox" class="toggle" id="overlay-toggle">
+                        </div>
+                        <div class="mod-card-desc">In-game HUD: FPS counter, WASD display, coordinates. Toggle menu with Right Shift.</div>
+                        <span class="mod-card-category" style="background:rgba(255,68,102,0.12);color:#ff4466">overlay</span>
+                    </div>
+                </div>
+                <div id="mods-grid" class="mods-grid"></div>
+            </div>
+
+            <div id="section-resourcepacks" class="section">
+                <h2>Resource Packs</h2>
+                <div class="drop-zone" id="rp-drop-zone">
+                    <p>Drop .zip resource packs here or</p>
+                    <button id="rp-install-btn" class="btn-secondary">Browse Files</button>
+                </div>
+                <div id="rp-list" class="pack-list"></div>
+            </div>
+
+            <div id="section-shaders" class="section">
+                <h2>Shader Packs</h2>
+                <div class="drop-zone" id="shader-drop-zone">
+                    <p>Drop .zip shader packs here or</p>
+                    <button id="shader-install-btn" class="btn-secondary">Browse Files</button>
+                </div>
+                <div id="shader-list" class="pack-list"></div>
+            </div>
+
+            <div id="section-settings" class="section">
+                <h2>Settings</h2>
+                <div class="settings-grid">
+                    <div class="setting-group">
+                        <label>Microsoft Client ID (for online login)</label>
+                        <div class="input-row">
+                            <input type="text" id="setting-client-id" placeholder="Paste your Azure AD client ID">
+                            <button id="client-id-save" class="btn-secondary">Save</button>
+                        </div>
+                        <span class="setting-hint">Optional. Register free at entra.microsoft.com to get one.</span>
+                    </div>
+                    <div class="setting-group">
+                        <label>Java Path</label>
+                        <input type="text" id="setting-java-path" placeholder="Auto-detect">
+                    </div>
+                    <div class="setting-group">
+                        <label>RAM Allocation</label>
+                        <div class="slider-row">
+                            <input type="range" id="setting-ram" min="1" max="32" value="4">
+                            <span id="ram-display">4 GB</span>
+                        </div>
+                    </div>
+                    <div class="setting-group">
+                        <label>Game Directory</label>
+                        <div class="input-row">
+                            <input type="text" id="setting-game-dir" placeholder="Default">
+                            <button id="game-dir-browse" class="btn-secondary">Browse</button>
+                        </div>
+                    </div>
+                    <div class="setting-group">
+                        <label>Window Size</label>
+                        <select id="setting-window-size">
+                            <option value="854x480">854x480 (SD)</option>
+                            <option value="1280x720">1280x720 (HD)</option>
+                            <option value="1920x1080" selected>1920x1080 (FHD)</option>
+                            <option value="2560x1440">2560x1440 (QHD)</option>
+                        </select>
+                    </div>
+                </div>
+                <button id="save-settings-btn" class="btn-primary">Save Settings</button>
+            </div>
+
+            <!-- Download progress overlay -->
+            <div id="download-overlay" class="download-overlay hidden">
+                <div class="download-content">
+                    <h3 id="download-title">Downloading...</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    <p id="download-status"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
