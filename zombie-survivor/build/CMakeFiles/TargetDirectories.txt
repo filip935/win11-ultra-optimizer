@@ -1,3 +1,0 @@
-C:/Users/filip/Documents/Default Project/zombie-survivor/build/CMakeFiles/zombie-survivor.dir
-C:/Users/filip/Documents/Default Project/zombie-survivor/build/CMakeFiles/edit_cache.dir
-C:/Users/filip/Documents/Default Project/zombie-survivor/build/CMakeFiles/rebuild_cache.dir
