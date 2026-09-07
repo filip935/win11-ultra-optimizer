@@ -1,0 +1,11 @@
+dist/
+fortnite-fps-optimizer.ps1
+remove-bloatware.ps1
+package.json
+package-lock.json
+node_modules/
+*.exe
+*.pdb
+*.ilk
+*.obj
+build/
